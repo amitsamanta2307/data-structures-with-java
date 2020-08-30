@@ -32,9 +32,12 @@ public class SinglyLinkedListTest {
 
     @Test
     public void testAddAtPostionZero() {
-        sut.insert(3, 0);
+        sut.add(2);
+        sut.add(3);
+        sut.add(4);
+        sut.insert(5, 2);
 
-        assertTrue("", sut.contains(3));
+        assertTrue("", sut.contains(5));
     }
 
     @Test

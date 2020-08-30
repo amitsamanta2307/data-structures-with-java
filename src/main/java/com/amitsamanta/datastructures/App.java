@@ -3,12 +3,26 @@
  */
 package com.amitsamanta.datastructures;
 
+import com.amitsamanta.datastructures.linkedlists.SinglyLinkedList;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
     }
 
     public static void main(String[] args) {
+        SinglyLinkedList list = new SinglyLinkedList();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        list.insert(11, 2);
+
+        list.remove(4);
+
         System.out.println(new App().getGreeting());
     }
 }

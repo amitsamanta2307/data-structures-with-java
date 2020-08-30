@@ -28,7 +28,28 @@ public class SinglyLinkedList {
     }
 
     public boolean remove(int element) {
-        return false;
+
+        if (isEmpty()) {
+            throw new IllegalArgumentException("List is empty.");
+        } else {
+            Node current = head;
+            Node previous = head;
+
+            while (current.getData() != element) {
+                previous = current;
+                current = current.getNext();
+            }
+
+            if (current == null)
+                return false;
+
+            previous.setNext(current.getNext());
+            current.setNext(null);
+
+            this.size--;
+
+            return true;
+        }
     }
 
     public boolean removeAt(int position) {
@@ -94,11 +115,13 @@ public class SinglyLinkedList {
             head = new Node(element, null);
         } else {
             Node current = head;
-            for (int i = 1; i <= position; i++) {
+            for (int i = 0; i < position - 1; i++) {
                 current = current.getNext();
             }
             Node newNode = new Node(element, current.getNext());
             current.setNext(newNode);
         }
+
+        this.size++;
     }
 }
