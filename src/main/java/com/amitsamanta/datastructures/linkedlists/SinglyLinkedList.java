@@ -1,19 +1,19 @@
 package com.amitsamanta.datastructures.linkedlists;
 
-public class SinglyLinkedList {
+public class SinglyLinkedList<T> {
     private int size;
-    private Node head;
+    private Node<T> head;
 
     public SinglyLinkedList() {
         size = 0;
         head = null;
     }
 
-    public void add(int element) {
+    public void add(T element) {
         addAtLast(element);
     }
 
-    public void insert(int element, int position) {
+    public void insert(T element, int position) {
         int count = size();
 
         if (position > count) {
@@ -27,13 +27,13 @@ public class SinglyLinkedList {
         addAtPos(element, position);
     }
 
-    public boolean remove(int element) {
+    public boolean remove(T element) {
 
         if (isEmpty()) {
             throw new IllegalArgumentException("List is empty.");
         } else {
-            Node current = head;
-            Node previous = head;
+            Node<T> current = head;
+            Node<T> previous = head;
 
             while (current.getData() != element) {
                 previous = current;
@@ -53,15 +53,18 @@ public class SinglyLinkedList {
     }
 
     public boolean removeAt(int position) {
+        if (isEmpty()) {
+            throw new IllegalArgumentException("List is empty.");
+        }
         return false;
     }
 
     // Check if a value is contained in the Linked List
-    public boolean contains(int element) {
+    public boolean contains(T element) {
         if (isEmpty()) {
             return false;
         } else {
-            Node current = head;
+            Node<T> current = head;
             while (current != null) {
                 if (current.getData() == element) {
                     return true;
@@ -83,45 +86,59 @@ public class SinglyLinkedList {
     }
 
     // Add a node to the begining of the list
-    private void addAtBeg(int element) {
+    private void addAtBeg(T element) {
         if (isEmpty()) {
-            head = new Node(element, null);
+            head = new Node<T>(element, null);
         } else {
-            Node current = head;
-            head = new Node(element, current);
+            Node<T> current = head;
+            head = new Node<T>(element, current);
         }
 
         this.size++;
     }
 
     // Add a node to the end of the list
-    private void addAtLast(int element) {
+    private void addAtLast(T element) {
         if (isEmpty()) {
-            head = new Node(element, null);
+            head = new Node<T>(element, null);
         } else {
-            Node current = head;
+            Node<T> current = head;
             while (current.getNext() != null) {
                 current = current.getNext();
             }
-            current.setNext(new Node(element, null));
+            current.setNext(new Node<T>(element, null));
         }
 
         this.size++;
     }
 
     // Add a node at the given position in the list
-    private void addAtPos(int element, int position) {
+    private void addAtPos(T element, int position) {
         if (isEmpty()) {
-            head = new Node(element, null);
+            head = new Node<T>(element, null);
         } else {
-            Node current = head;
+            Node<T> current = head;
             for (int i = 0; i < position - 1; i++) {
                 current = current.getNext();
             }
-            Node newNode = new Node(element, current.getNext());
+            Node<T> newNode = new Node<T>(element, current.getNext());
             current.setNext(newNode);
         }
 
         this.size++;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+        Node<T> current = head;
+        while (current != null) {
+            sb.append(current.getData() + ", ");
+            current = current.getNext();
+        }
+        sb.append(" ]");
+
+        return sb.toString();
     }
 }

@@ -11,7 +11,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        SinglyLinkedList list = new SinglyLinkedList();
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 
         list.add(1);
         list.add(2);
@@ -23,6 +23,6 @@ public class App {
 
         list.remove(4);
 
-        System.out.println(new App().getGreeting());
+        System.out.println("Original List: " + list.toString());
     }
 }

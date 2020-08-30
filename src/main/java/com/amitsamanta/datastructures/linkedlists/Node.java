@@ -1,43 +1,48 @@
 package com.amitsamanta.datastructures.linkedlists;
 
-public class Node {
-    private int data;
-    private Node next;
-    private Node prev;
+public class Node<T> {
+    private T data;
+    private Node<T> next;
+    private Node<T> prev;
 
-    public Node(int data, Node next) {
+    public Node(T data, Node<T> next) {
         this.data = data;
         this.next = next;
     }
 
-    public Node(int data, Node prev, Node next) {
+    public Node(T data, Node<T> prev, Node<T> next) {
         this.data = data;
         this.prev = prev;
         this.next = next;
     }
 
     // getters & setters
-    public int getData() {
+    public T getData() {
         return data;
     }
 
-    public Node getPrev() {
+    public Node<T> getPrev() {
         return prev;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setData(int value) {
+    public void setData(T value) {
         this.data = value;
     }
 
-    public void setPrev(Node value) {
+    public void setPrev(Node<T> value) {
         this.prev = value;
     }
 
-    public void setNext(Node value) {
+    public void setNext(Node<T> value) {
         this.next = value;
+    }
+
+    @Override
+    public String toString() {
+        return data.toString();
     }
 }

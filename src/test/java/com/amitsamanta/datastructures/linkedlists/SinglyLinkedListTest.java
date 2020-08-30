@@ -7,11 +7,11 @@ import org.junit.Before;
 
 public class SinglyLinkedListTest {
 
-    SinglyLinkedList sut;
+    SinglyLinkedList<Integer> sut;
 
     @Before
     public void setup() {
-        sut = new SinglyLinkedList();
+        sut = new SinglyLinkedList<Integer>();
     }
 
     @Test
